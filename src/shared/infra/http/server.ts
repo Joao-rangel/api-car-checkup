@@ -1,6 +1,8 @@
 import 'reflect-metadata';
 import express from 'express';
-import {AppDataSource} from './data-source';
+
+import {AppDataSource} from '../typeorm/data-source';
+import {router} from './routes';
 
 AppDataSource.setOptions({host: 'database'});
 AppDataSource.initialize()
@@ -8,10 +10,8 @@ AppDataSource.initialize()
     const app = express();
 
     app.use(express.json());
+    app.use(router);
 
-    app.get('/', (request, response) =>
-      response.json({message: 'Hello World!'}),
-    );
     app.listen(3333, () => console.info('Server started on port: 3333'));
   })
   .catch((error) => console.log(error));

@@ -6,7 +6,7 @@
    "author": "Joao Rangel <joao.vran@gmail.com>",
    "license": "MIT",
    "scripts": {
-      "dev": "ts-node-dev --transpile-only --ignore-watch node_modules --respawn src/server.ts",
+      "dev": "ts-node-dev --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
       "typeorm": "typeorm-ts-node-commonjs"
    },
    "dependencies": {
