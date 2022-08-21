@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import express from 'express';
 
-import {AppDataSource} from '../typeorm/data-source';
+import {appDataSource} from '../typeorm/data-source';
 import {router} from './routes';
 
 AppDataSource.setOptions({host: 'database'});

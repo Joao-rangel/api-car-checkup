@@ -52,6 +52,6 @@ export class CreateSchedules1661105043456 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('appointments');
+    await queryRunner.dropTable('schedules');
   }
 }
