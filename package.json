@@ -7,7 +7,7 @@
    "license": "MIT",
    "scripts": {
       "dev": "ts-node-dev --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
-      "typeorm": "typeorm-ts-node-commonjs"
+      "typeorm": "typeorm-ts-node-commonjs -d ./src/shared/infra/typeorm/data-source.ts"
    },
    "dependencies": {
       "express": "^4.18.1",
