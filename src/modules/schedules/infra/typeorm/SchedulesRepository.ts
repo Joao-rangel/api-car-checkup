@@ -41,10 +41,7 @@ export class SchedulesRepository implements ISchedulesRepository {
   }
 
   async findByWeek(date: Date): Promise<Schedule[]> {
-    console.log(date);
-
     const parsedDate = format(date, 'ww-yyyy');
-    console.log(parsedDate);
 
     const schedules = await this.repository.find({
       where: {
