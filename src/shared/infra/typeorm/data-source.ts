@@ -9,6 +9,6 @@ export const appDataSource = new DataSource({
   database: 'car_checkup',
   synchronize: true,
   logging: false,
-  entities: ['./src/modules/**/entities/*.ts'],
+  entities: ['./src/modules/**/typeorm/*.entity.ts'],
   migrations: ['./src/shared/infra/typeorm/migrations/*.ts'],
 });

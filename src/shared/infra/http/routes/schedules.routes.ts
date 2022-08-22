@@ -1,5 +1,5 @@
 import {Router} from 'express';
-import {CreateScheduleController} from '@modules/schedules/CreateScheduleController';
+import {CreateScheduleController} from '@modules/schedules/useCases/createSchedule/CreateScheduleController';
 
 export const schedulesRouter = Router();
 
