@@ -11,7 +11,7 @@ API para o agendamento da revisão do carro.
 
 ## Dependências do sistema
 
-* [Node.JS](https://nodejs.org/en/) - 14.16.x
+* [Node.JS](https://nodejs.org/en/) - 16.13.x
 * [Yarn](https://yarnpkg.com/) - 3.2.x
 * [Docker](https://docs.docker.com/get-docker/) 20.10.x
 ---
