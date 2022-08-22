@@ -1,6 +1,7 @@
 import {ISchedulesRepository} from '@modules/schedules/interfaces/ISchedulesRepository';
 import {inject, injectable} from 'tsyringe';
 import {Schedule} from '@modules/schedules/infra/typeorm/Schedule.entity';
+import {AppError} from '@shared/errors/AppError';
 
 export enum PeriodType {
   day = 'day',
@@ -21,6 +22,8 @@ export class FindBookedSchedulesService {
   ) {}
 
   async execute({date, period}: IRequest): Promise<Schedule[]> {
+    if (!period) throw new AppError('Período seleceionado não disponível.');
+
     const periodResolver = {
       day: 'findByDay',
       week: 'findByWeek',
