@@ -22,6 +22,7 @@ export class CreateSchedules1661105043456 implements MigrationInterface {
           {
             name: 'carId',
             type: 'int',
+            isNullable: false,
           },
           {
             name: 'createdAt',

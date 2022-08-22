@@ -1,4 +1,7 @@
-import {ICarsRepository} from '@modules/cars/interfaces/ICarsRepository';
+import {
+  ICarsRepository,
+  ICreateCar,
+} from '@modules/cars/interfaces/ICarsRepository';
 import {appDataSource} from '@shared/infra/typeorm/data-source';
 import {Repository} from 'typeorm';
 import {Car} from './Car.entity';
@@ -16,7 +19,7 @@ export class CarsRepository implements ICarsRepository {
     return car;
   }
 
-  async create(payload: Pick<Car, 'model' | 'licensePlate'>): Promise<Car> {
+  async create(payload: ICreateCar): Promise<Car> {
     const car = this.repository.create(payload);
 
     await this.repository.save(car);

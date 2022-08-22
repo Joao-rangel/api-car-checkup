@@ -26,6 +26,7 @@ export class CreateCars1661104403417 implements MigrationInterface {
           {
             name: 'userId',
             type: 'int',
+            isNullable: false,
           },
           {
             name: 'createdAt',

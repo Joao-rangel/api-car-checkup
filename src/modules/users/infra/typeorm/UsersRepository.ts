@@ -11,7 +11,10 @@ export class UsersRepository implements IUsersRepository {
   }
 
   async findByContact(contact: User['contact']): Promise<User> {
-    const user = await this.repository.findOne({where: {contact}});
+    const user = await this.repository.findOne({
+      where: {contact},
+      relations: ['cars'],
+    });
 
     return user;
   }

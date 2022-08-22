@@ -1,7 +1,10 @@
+import {Car} from '@modules/cars/infra/typeorm/Car.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -16,6 +19,10 @@ export class User {
 
   @Column()
   contact: number;
+
+  @OneToMany(() => Car, (car) => car.user)
+  @JoinColumn()
+  cars: Car[];
 
   @CreateDateColumn()
   createdAt: Date;
