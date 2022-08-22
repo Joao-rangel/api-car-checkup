@@ -1,5 +1,6 @@
 import 'reflect-metadata';
 import express from 'express';
+import 'express-async-errors';
 
 import {appDataSource} from '../typeorm/data-source';
 import {router} from './routes';
