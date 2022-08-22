@@ -10,4 +10,6 @@ export interface ISchedulesRepository {
   create(payload: ICreateSchedulesDTO): Promise<Schedule>;
   findByDate(date: Date): Promise<Schedule>;
   findByDay(date: Date): Promise<Schedule[]>;
+  findByWeek(date: Date): Promise<Schedule[]>;
+  findByMonth(date: Date): Promise<Schedule[]>;
 }

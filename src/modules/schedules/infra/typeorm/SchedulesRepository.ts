@@ -40,6 +40,33 @@ export class SchedulesRepository implements ISchedulesRepository {
     return schedules;
   }
 
+  async findByWeek(date: Date): Promise<Schedule[]> {
+    console.log(date);
+
+    const parsedDate = format(date, 'ww-yyyy');
+    console.log(parsedDate);
+
+    const schedules = await this.repository.find({
+      where: {
+        date: Raw((date) => `to_char(${date}, 'WW-YYYY') = '${parsedDate}'`),
+      },
+    });
+
+    return schedules;
+  }
+
+  async findByMonth(date: Date): Promise<Schedule[]> {
+    const parsedDate = format(date, 'MM-yyyy');
+
+    const schedules = await this.repository.find({
+      where: {
+        date: Raw((date) => `to_char(${date}, 'MM-YYYY') = '${parsedDate}'`),
+      },
+    });
+
+    return schedules;
+  }
+
   async create({date, car}: ICreateSchedulesDTO): Promise<Schedule> {
     const schedule = this.repository.create({date, car});
 
