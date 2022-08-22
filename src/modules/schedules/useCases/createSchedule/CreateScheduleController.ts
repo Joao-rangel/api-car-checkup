@@ -4,16 +4,26 @@ import {CreateScheduleService} from './CreateScheduleService';
 
 export class CreateScheduleController {
   async handle(request: Request, response: Response): Promise<Response> {
-    const {user, car, date} = request.body;
+    try {
+      const {name, contact, model, licensePlate, date} = request.body;
 
-    const createScheduleService = container.resolve(CreateScheduleService);
+      const parsedDate = new Date(String(date));
 
-    const schedule = await createScheduleService.execute({
-      user,
-      car,
-      date,
-    });
+      const createScheduleService = container.resolve(CreateScheduleService);
 
-    return response.status(201).json({schedule});
+      const schedule = await createScheduleService.execute({
+        name,
+        contact,
+        model,
+        licensePlate,
+        date: parsedDate,
+      });
+
+      return response.status(201).json({schedule});
+    } catch (err) {
+      return response
+        .status(err?.statusCode || 400)
+        .json({message: err?.message});
+    }
   }
 }
