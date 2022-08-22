@@ -7,7 +7,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import {User} from '@modules/users/infra/typeorm/entities/User';
+import {User} from '@modules/users/infra/typeorm/User.entity';
 
 @Entity('cars')
 export class Car {
