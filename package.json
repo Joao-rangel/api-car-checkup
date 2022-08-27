@@ -8,8 +8,8 @@
    "scripts": {
       "dev": "ts-node-dev -r tsconfig-paths/register --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
       "migration:create": "typeorm-ts-node-commonjs migration:create -r tsconfig-paths/register",
-      "migration:run": "typeorm-ts-node-commonjs migration:run -d ./src/shared/infra/typeorm/data-source.ts -r tsconfig-paths/register",
-      "migration:revert": "typeorm-ts-node-commonjs migration:revert -d ./src/shared/infra/typeorm/data-source.ts -r tsconfig-paths/register"
+      "migration:run": "typeorm-ts-node-commonjs migration:run -d ./src/shared/infra/typeorm/data-source.ts",
+      "migration:revert": "typeorm-ts-node-commonjs migration:revert -d ./src/shared/infra/typeorm/data-source.ts"
    },
    "dependencies": {
       "date-fns": "^2.29.2",
