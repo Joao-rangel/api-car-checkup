@@ -10,9 +10,10 @@ import {
 } from 'typeorm';
 import {User} from '@modules/users/infra/typeorm/User.entity';
 import {Schedule} from '@modules/schedules/infra/typeorm/Schedule.entity';
+import {ICar} from '@modules/cars/interfaces/ICar';
 
 @Entity('cars')
-export class Car {
+export class Car implements ICar {
   @PrimaryGeneratedColumn()
   id: number;
 

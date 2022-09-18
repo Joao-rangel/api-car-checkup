@@ -1,15 +1,10 @@
-import {Car} from '@modules/cars/infra/typeorm/Car.entity';
-import {Schedule} from '../infra/typeorm/Schedule.entity';
-
-export interface ICreateSchedulesDTO {
-  car: Pick<Car, 'id'>;
-  date: Date;
-}
+import {ISchedule} from './ISchedule';
+import {ICreateSchedulesDTO} from './ICreateSchedulesDTO';
 
 export interface ISchedulesRepository {
-  create(payload: ICreateSchedulesDTO): Promise<Schedule>;
-  findByDate(date: Date): Promise<Schedule>;
-  findByDay(date: Date): Promise<Schedule[]>;
-  findByWeek(date: Date): Promise<Schedule[]>;
-  findByMonth(date: Date): Promise<Schedule[]>;
+  create(payload: ICreateSchedulesDTO): Promise<ISchedule>;
+  findByDate(date: Date): Promise<ISchedule>;
+  findByDay(date: Date): Promise<ISchedule[]>;
+  findByWeek(date: Date): Promise<ISchedule[]>;
+  findByMonth(date: Date): Promise<ISchedule[]>;
 }

@@ -1,6 +1,6 @@
-import {User} from '../infra/typeorm/User.entity';
+import {IUser} from './IUser';
 
 export interface IUsersRepository {
-  create(user: Pick<User, 'name' | 'contact'>): Promise<User>;
-  findByContact(id: User['contact']): Promise<User>;
+  create(user: Pick<IUser, 'name' | 'contact'>): Promise<IUser>;
+  findByContact(id: IUser['contact']): Promise<IUser>;
 }

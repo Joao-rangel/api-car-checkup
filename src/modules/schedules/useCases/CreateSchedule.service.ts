@@ -1,10 +1,11 @@
-import {ISchedulesRepository} from '@modules/schedules/interfaces/ISchedulesRepository';
-import {AppError} from '@shared/errors/AppError';
 import {inject, injectable} from 'tsyringe';
 import {isAfter} from 'date-fns';
+
+import {AppError} from '@shared/errors/AppError';
+import {ISchedulesRepository} from '@modules/schedules/interfaces/ISchedulesRepository';
 import {ICarsRepository} from '@modules/cars/interfaces/ICarsRepository';
 import {IUsersRepository} from '@modules/users/interfaces/IUsersRepository';
-import {Schedule} from '../infra/typeorm/Schedule.entity';
+import {ISchedule} from '../interfaces/ISchedule';
 
 interface ICreateSchedule {
   name: string;
@@ -31,7 +32,7 @@ export class CreateScheduleService {
     model,
     licensePlate,
     date,
-  }: ICreateSchedule): Promise<Schedule> {
+  }: ICreateSchedule): Promise<ISchedule> {
     if (isAfter(new Date(), date)) {
       throw new AppError('Não é possível agendar em uma data que já passou.');
     }

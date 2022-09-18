@@ -1,4 +1,6 @@
 import {Car} from '@modules/cars/infra/typeorm/Car.entity';
+import {ICar} from '@modules/cars/interfaces/ICar';
+import {ISchedule} from '@modules/schedules/interfaces/ISchedule';
 import {
   Column,
   CreateDateColumn,
@@ -10,7 +12,7 @@ import {
 } from 'typeorm';
 
 @Entity('schedules')
-export class Schedule {
+export class Schedule implements ISchedule {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -19,7 +21,7 @@ export class Schedule {
 
   @ManyToOne(() => Car)
   @JoinColumn({name: 'carId'})
-  car: Car;
+  car: ICar;
 
   @CreateDateColumn()
   createdAt: Date;

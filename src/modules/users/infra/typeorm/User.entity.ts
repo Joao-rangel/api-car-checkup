@@ -1,4 +1,6 @@
 import {Car} from '@modules/cars/infra/typeorm/Car.entity';
+import {ICar} from '@modules/cars/interfaces/ICar';
+import {IUser} from '@modules/users/interfaces/IUser';
 import {
   Column,
   CreateDateColumn,
@@ -10,7 +12,7 @@ import {
 } from 'typeorm';
 
 @Entity('users')
-export class User {
+export class User implements IUser {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -22,7 +24,7 @@ export class User {
 
   @OneToMany(() => Car, (car) => car.user)
   @JoinColumn()
-  cars: Car[];
+  cars: ICar[];
 
   @CreateDateColumn()
   createdAt: Date;

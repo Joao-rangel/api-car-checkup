@@ -1,6 +1,7 @@
-import {ISchedulesRepository} from '@modules/schedules/interfaces/ISchedulesRepository';
 import {inject, injectable} from 'tsyringe';
 import {getHours, isAfter, setHours, startOfDay} from 'date-fns';
+
+import {ISchedulesRepository} from '@modules/schedules/interfaces/ISchedulesRepository';
 
 export interface IAvailableSchedules {
   date: Date;

@@ -1,20 +1,20 @@
-import {
-  ICreateSchedulesDTO,
-  ISchedulesRepository,
-} from '@modules/schedules/interfaces/ISchedulesRepository';
-import {appDataSource} from '@shared/infra/typeorm/data-source';
 import {Repository, Raw} from 'typeorm';
 import {format} from 'date-fns';
+
+import {appDataSource} from '@shared/infra/typeorm/data-source';
+import {ISchedulesRepository} from '@modules/schedules/interfaces/ISchedulesRepository';
+import {ICreateSchedulesDTO} from '@modules/schedules/interfaces/ICreateSchedulesDTO';
+import {ISchedule} from '@modules/schedules/interfaces/ISchedule';
 import {Schedule} from './Schedule.entity';
 
 export class SchedulesRepository implements ISchedulesRepository {
-  private repository: Repository<Schedule>;
+  private repository: Repository<ISchedule>;
 
   constructor() {
     this.repository = appDataSource.getRepository(Schedule);
   }
 
-  async findByDate(date: Date): Promise<Schedule> {
+  async findByDate(date: Date): Promise<ISchedule> {
     const parsedDate = format(date, 'dd-MM-yyyy,HH:mm');
 
     const schedule = await this.repository.findOne({
@@ -28,7 +28,7 @@ export class SchedulesRepository implements ISchedulesRepository {
     return schedule;
   }
 
-  async findByDay(date: Date): Promise<Schedule[]> {
+  async findByDay(date: Date): Promise<ISchedule[]> {
     const parsedDate = format(date, 'dd-MM-yyyy');
 
     const schedules = await this.repository.find({
@@ -40,7 +40,7 @@ export class SchedulesRepository implements ISchedulesRepository {
     return schedules;
   }
 
-  async findByWeek(date: Date): Promise<Schedule[]> {
+  async findByWeek(date: Date): Promise<ISchedule[]> {
     const parsedDate = format(date, 'ww-yyyy');
 
     const schedules = await this.repository.find({
@@ -52,7 +52,7 @@ export class SchedulesRepository implements ISchedulesRepository {
     return schedules;
   }
 
-  async findByMonth(date: Date): Promise<Schedule[]> {
+  async findByMonth(date: Date): Promise<ISchedule[]> {
     const parsedDate = format(date, 'MM-yyyy');
 
     const schedules = await this.repository.find({
@@ -64,7 +64,7 @@ export class SchedulesRepository implements ISchedulesRepository {
     return schedules;
   }
 
-  async create({date, car}: ICreateSchedulesDTO): Promise<Schedule> {
+  async create({date, car}: ICreateSchedulesDTO): Promise<ISchedule> {
     const schedule = this.repository.create({date, car});
 
     await this.repository.save(schedule);
@@ -72,7 +72,7 @@ export class SchedulesRepository implements ISchedulesRepository {
     return schedule;
   }
 
-  async findAvailable(date: Date): Promise<Schedule> {
+  async findAvailable(date: Date): Promise<ISchedule> {
     const schedule = await this.repository.findOne({where: {date}});
 
     return schedule;
