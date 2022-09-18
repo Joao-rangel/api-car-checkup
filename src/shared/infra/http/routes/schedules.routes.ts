@@ -1,14 +1,10 @@
 import {Router} from 'express';
-import {CreateScheduleController} from '@modules/schedules/useCases/createSchedule/CreateScheduleController';
-import {FindAvailableSchedulesController} from '@modules/schedules/useCases/findAvailableSchedules/FindAvailableSchedulesController';
-import {FindBookedSchedulesController} from '@modules/schedules/useCases/findBookedSchedules/FindBookedSchedulesController';
+import {SchedulesController} from '@modules/schedules/infra/http/Schedules.controller';
 
 export const schedulesRouter = Router();
 
-const createScheduleController = new CreateScheduleController();
-const findAvailableSchedulesController = new FindAvailableSchedulesController();
-const findBookedSchedulesController = new FindBookedSchedulesController();
+const schedulesController = new SchedulesController();
 
-schedulesRouter.post('/', createScheduleController.handle);
-schedulesRouter.get('/available', findAvailableSchedulesController.handle);
-schedulesRouter.get('/booked', findBookedSchedulesController.handle);
+schedulesRouter.post('/', schedulesController.create);
+schedulesRouter.get('/available', schedulesController.findAvailable);
+schedulesRouter.get('/booked', schedulesController.findBooked);

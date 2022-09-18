@@ -1,10 +1,10 @@
 import {ISchedulesRepository} from '@modules/schedules/interfaces/ISchedulesRepository';
 import {AppError} from '@shared/errors/AppError';
 import {inject, injectable} from 'tsyringe';
-import {Schedule} from '../../infra/typeorm/Schedule.entity';
 import {isAfter} from 'date-fns';
 import {ICarsRepository} from '@modules/cars/interfaces/ICarsRepository';
 import {IUsersRepository} from '@modules/users/interfaces/IUsersRepository';
+import {Schedule} from '../infra/typeorm/Schedule.entity';
 
 interface ICreateSchedule {
   name: string;
