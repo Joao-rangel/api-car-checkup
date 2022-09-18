@@ -7,7 +7,7 @@ export const appDataSource = new DataSource({
   username: 'docker',
   password: 'docker',
   database: 'car_checkup',
-  synchronize: true,
+  synchronize: false,
   logging: false,
   entities: ['./src/modules/**/typeorm/*.entity.ts'],
   migrations: ['./src/shared/infra/typeorm/migrations/*.ts'],
