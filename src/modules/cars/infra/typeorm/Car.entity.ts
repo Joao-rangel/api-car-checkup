@@ -11,6 +11,8 @@ import {
 import {User} from '@modules/users/infra/typeorm/User.entity';
 import {Schedule} from '@modules/schedules/infra/typeorm/Schedule.entity';
 import {ICar} from '@modules/cars/interfaces/ICar';
+import {IUser} from '@modules/users/interfaces/IUser';
+import {ISchedule} from '@modules/schedules/interfaces/ISchedule';
 
 @Entity('cars')
 export class Car implements ICar {
@@ -25,11 +27,11 @@ export class Car implements ICar {
 
   @ManyToOne(() => User)
   @JoinColumn({name: 'userId'})
-  user: User;
+  user: IUser;
 
   @OneToMany(() => Schedule, (schedule) => schedule.car)
   @JoinColumn()
-  schedules: Schedule[];
+  schedules: ISchedule[];
 
   @CreateDateColumn()
   createdAt: Date;
