@@ -23,7 +23,7 @@ export class FindBookedSchedulesService {
   ) {}
 
   async execute({date, period}: IRequest): Promise<ISchedule[]> {
-    if (!period) throw new AppError('Período seleceionado não disponível.');
+    if (!period) throw new AppError('Período selecionado não disponível.');
 
     const periodResolver = {
       day: 'findByDay',
